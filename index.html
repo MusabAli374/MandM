@@ -1,0 +1,42 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Will You Be My Valentine?</title>
+  <style>
+    body { background-color: #ffe6f0; font-family: 'Dancing Script', cursive; text-align: center; }
+    h1 { font-size: 2.5em; color: #ff4d88; }
+    .buttons { margin-top: 20px; }
+    button { background-color: #ff4d88; color: white; border: none; padding: 10px 20px; margin: 5px; border-radius: 10px; cursor: pointer; font-size: 1.2em; }
+    select, audio { margin-top: 20px; }
+  </style>
+</head>
+<body>
+  <h1>Will You Be My Valentine, Mina? 💖</h1>
+  <div>Always your biggest supporter ~ Musab ❤️</div>
+  <label for="songSelect">Choose a song to play:</label>
+  <select id="songSelect" onchange="playSong()">
+    <option value="music/1.mp3">Maula Mere</option>
+    <option value="music/2.mp3">Main aur Tum</option>
+    <option value="music/3.mp3">Yaqeen</option>
+  </select>
+  <audio id="audioPlayer" controls></audio>
+  <script>
+    function playSong() {
+      const audio = document.getElementById('audioPlayer');
+      const song = document.getElementById('songSelect').value;
+      audio.src = song;
+      audio.play();
+    }
+  </script>
+  <div class="buttons">
+    <button onclick="window.location.href='note.html'">Yes</button>
+    <button onclick="alert('Awww, you can’t say no!')">No</button>
+  </div>
+  <div class="buttons">
+    <button onclick="window.location.href='images.html'">Tap here gently to view memories</button>
+  </div>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A Special Note for Mina</title>
+  <style>
+    body { background-color: #ffe6f0; font-family: 'Dancing Script', cursive; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; }
+    .note { background: #fff0f5; padding: 20px 30px; border: 3px dashed #ff4d88; border-radius: 15px; width: 80%; max-width: 600px; text-align: center; box-shadow: 0 4px 8px rgba(255, 77, 136, 0.5); cursor: pointer; }
+    .content { display: none; }
+    h2 { font-size: 2em; margin-bottom: 15px; }
+    p { font-size: 1.2em; margin: 10px 0; }
+    .flower { margin-top: 20px; font-size: 2em; color: #ff4d88; text-align: center; }
+  </style>
+  <script>
+    function openNote() {
+      document.getElementById('title').style.display = 'none';
+      document.getElementById('content').style.display = 'block';
+    }
+  </script>
+</head>
+<body>
+  <div class="note" onclick="openNote()">
+    <h2 id="title">Tap here (gently) to open a special note4you</h2>
+    <div id="content" class="content">
+      <p>Hello Mina, my comfort place, my partner, my love. You are more than anything I could ever ask for in a person. Thank you for being my cushion, thank you for smiling at me every day when I came back home tired, thank you for enjoying every little moment with me, and more than anything: thank you for being you. You add colour and calmness to my life, you really are the pink side of batman, and I hope to be with you forever more. 242 days together - that has a good rhyme to it, but as I always say: we have a lifetime to spend together. Stay happy, stay blessed, my prayers will always include your name insha'Allah, and I will fight for you. I am sorry if I hurt you along the journey, and I hope that while I make my mistakes, you can overlook some, and hit me with a pan for some (I'm kidding, don't make that face). I love you, always take care, always be the reason for the smile on so many faces. You're beautiful, all those flowers are nothing in comparison.</p>
+      <div class="flower">Here's one for you 🌸</div>
+    </div>
+  </div>
+</body>
+</html>

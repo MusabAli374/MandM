@@ -1,0 +1,38 @@
+<!-- images.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Memories with Mina</title>
+  <style>
+    body { background-color: #ffe6f0; font-family: 'Dancing Script', cursive; text-align: center; }
+    h1 { font-size: 2.5em; color: #ff4d88; margin-top: 20px; }
+    .gallery img { display: block; margin: 20px auto; width: auto; height: auto; max-width: 90%; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.2); }
+  </style>
+</head>
+<body>
+  <h1>Memories with my sweet girl</h1>
+  <div class="gallery">
+    <script>
+      for (let i = 1; i <= 19; i++) {
+        document.write(`<img src='images/${i}.jpg' alt='Memory ${i}'>`);
+      }
+    </script>
+  </div>
+  <button onclick="window.history.back()">Back</button>
+  <script>
+    // Retain the playing audio from index.html
+    window.addEventListener('load', () => {
+      if (window.opener && !window.opener.closed) {
+        const audio = window.opener.document.getElementById('audioPlayer');
+        if (audio && audio.paused === false) {
+          const cloneAudio = audio.cloneNode(true);
+          document.body.appendChild(cloneAudio);
+          cloneAudio.play();
+        }
+      }
+    });
+  </script>
+</body>
+</html>
