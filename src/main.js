@@ -18,7 +18,7 @@ const camera = new THREE.PerspectiveCamera(
   100
 );
 
-camera.position.set(0, 1.4, 7);
+camera.position.set(0, 1.2, 9);
 
 const renderer = new THREE.WebGLRenderer({
   canvas,
@@ -125,7 +125,7 @@ function updateCarousel() {
     lily.position.y = offset === 0 ? 0 : -0.35;
     lily.position.z = Math.abs(offset) * -1.7;
 
-    const scale = offset === 0 ? 1.8 : 0.95;
+    const scale = offset === 0 ? 0.45 : 0.25;
     lily.scale.set(scale, scale, scale);
 
     lily.rotation.y = offset * 0.45;
