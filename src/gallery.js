@@ -1,3 +1,7 @@
+function shuffleArray(array) {
+  return [...array].sort(() => Math.random() - 0.5);
+}
+
 import { playRandomSpotifySong, stopMusic } from "./audio.js";
 
 const door = document.getElementById("memory-door");
@@ -18,7 +22,10 @@ let startX = 0;
 let startY = 0;
 
 export function openMemoryDoor(memory) {
-  currentMemory = memory;
+  currentMemory = {
+    ...memory,
+    photos: shuffleArray(memory.photos)
+  };
   photoIndex = 0;
 
   doorTitle.textContent = memory.title;
