@@ -1,5 +1,6 @@
 * {
   box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
 }
 
 html,
@@ -14,7 +15,8 @@ body,
 }
 
 body {
-  background: radial-gradient(circle at top, #ffd1e6, #101020 70%);
+  background: radial-gradient(circle at top, #ffd1e6, #101020 72%);
+  touch-action: pan-y;
 }
 
 #world {
@@ -36,7 +38,7 @@ body {
 
 #ui h1 {
   margin: 0;
-  font-size: 2.3rem;
+  font-size: 2.35rem;
   letter-spacing: 1px;
 }
 
@@ -47,8 +49,8 @@ body {
 
 .hint {
   margin: 0;
-  opacity: 0.8;
-  font-size: 0.9rem;
+  opacity: 0.82;
+  font-size: 0.92rem;
 }
 
 .hidden {
@@ -66,40 +68,48 @@ body {
 
 #blur-bg {
   position: absolute;
-  inset: -30px;
+  inset: -40px;
   background-size: cover;
   background-position: center;
-  filter: blur(28px) brightness(0.65);
-  transform: scale(1.1);
+  filter: blur(30px) brightness(0.62) saturate(1.2);
+  transform: scale(1.12);
 }
 
 .door-content {
   position: relative;
   z-index: 2;
   width: 86%;
-  max-width: 380px;
-  padding: 34px 24px;
-  border-radius: 28px;
+  max-width: 390px;
+  padding: 36px 24px;
+  border-radius: 30px;
   text-align: center;
   background: rgba(255, 255, 255, 0.14);
-  backdrop-filter: blur(18px);
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.42);
 }
 
 .door-content h2 {
-  margin-top: 0;
+  margin: 0 0 12px;
   font-size: 2rem;
 }
 
+.door-content p {
+  margin: 0;
+  opacity: 0.86;
+}
+
 #enter-memory {
-  margin-top: 16px;
+  margin-top: 20px;
   border: none;
   border-radius: 999px;
-  padding: 14px 24px;
+  padding: 14px 26px;
   font-size: 1rem;
   font-weight: bold;
   background: white;
   color: #222;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.28);
 }
 
 #gallery {
@@ -108,42 +118,121 @@ body {
   z-index: 20;
   display: grid;
   place-items: center;
-  background: rgba(10, 10, 20, 0.92);
+  background:
+    radial-gradient(circle at center, rgba(255, 255, 255, 0.08), transparent 42%),
+    rgba(8, 8, 18, 0.94);
+  overflow: hidden;
+  touch-action: pan-y;
+}
+
+#gallery::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.05),
+    transparent 22%,
+    rgba(0, 0, 0, 0.28)
+  );
+  pointer-events: none;
 }
 
 #gallery-img {
-  max-width: 92vw;
-  max-height: 72vh;
-  border-radius: 24px;
+  position: relative;
+  z-index: 2;
+  display: block;
+  max-width: min(92vw, 980px);
+  max-height: 68vh;
+  width: auto;
+  height: auto;
   object-fit: contain;
-  box-shadow: 0 20px 70px rgba(0, 0, 0, 0.6);
+  border-radius: 26px;
+  background: rgba(255, 255, 255, 0.06);
+  box-shadow:
+    0 24px 90px rgba(0, 0, 0, 0.68),
+    0 0 0 1px rgba(255, 255, 255, 0.12);
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.slide-left {
+  animation: slideLeft 260ms ease both;
+}
+
+.slide-right {
+  animation: slideRight 260ms ease both;
+}
+
+@keyframes slideLeft {
+  from {
+    opacity: 0;
+    transform: translateX(34px) scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+@keyframes slideRight {
+  from {
+    opacity: 0;
+    transform: translateX(-34px) scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
 }
 
 #gallery-caption {
   position: fixed;
-  bottom: 86px;
+  z-index: 3;
+  bottom: 188px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 88%;
   text-align: center;
-  opacity: 0.85;
+  opacity: 0.9;
+  font-size: 0.95rem;
+  text-shadow: 0 0 14px rgba(0, 0, 0, 0.85);
+}
+
+#spotify-player {
+  position: fixed;
+  left: 50%;
+  bottom: 92px;
+  transform: translateX(-50%);
+  z-index: 30;
+  width: min(92vw, 430px);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.38);
 }
 
 #close-gallery {
   position: fixed;
-  top: 24px;
-  right: 24px;
+  z-index: 35;
+  top: 22px;
+  right: 22px;
   border: none;
-  background: rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.16);
   color: white;
   font-size: 2rem;
   width: 48px;
   height: 48px;
   border-radius: 50%;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
 }
 
 .gallery-controls {
   position: fixed;
-  bottom: 28px;
+  z-index: 32;
+  bottom: 26px;
   display: flex;
-  gap: 20px;
+  gap: 22px;
 }
 
 .gallery-controls button {
@@ -151,12 +240,17 @@ body {
   width: 54px;
   height: 54px;
   border-radius: 50%;
-  font-size: 1.5rem;
-  background: white;
+  font-size: 1.45rem;
+  background: rgba(255, 255, 255, 0.92);
   color: #222;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
 }
 
 @media (max-width: 600px) {
+  #ui {
+    top: 28px;
+  }
+
   #ui h1 {
     font-size: 2rem;
   }
@@ -164,16 +258,18 @@ body {
   #memory-title {
     font-size: 1.05rem;
   }
-}
 
-#spotify-player {
-  position: fixed;
-  left: 50%;
-  bottom: 100px;
-  transform: translateX(-50%);
-  z-index: 30;
-  width: 92%;
-  max-width: 420px;
-  border-radius: 14px;
-  overflow: hidden;
+  #gallery-img {
+    max-width: 92vw;
+    max-height: 60vh;
+    border-radius: 22px;
+  }
+
+  #gallery-caption {
+    bottom: 176px;
+  }
+
+  #spotify-player {
+    bottom: 88px;
+  }
 }

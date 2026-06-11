@@ -1,3 +1,9 @@
+const BASE = import.meta.env.BASE_URL;
+
+function photo(folder, filename) {
+  return `${BASE}photos/${folder}/${encodeURIComponent(filename)}`;
+}
+
 export const spotifySongs = [
   "https://open.spotify.com/embed/track/4A26yugsWmBVHLDj9NZlNr",
   "https://open.spotify.com/embed/track/5thVzD79BxlDTYy0LfHzvu",
@@ -18,38 +24,167 @@ export const spotifySongs = [
 export const memories = [
   {
     title: "Black Lily",
+    folder: "black",
     theme: "#171717",
     glow: "#d8d8d8",
-    photos: ["/photos/black/1.jpg", "/photos/black/2.jpg", "/photos/black/3.jpg"]
+    photos: [
+      "20260317_023718.jpg",
+      "IMG-20250109-WA0063.jpg",
+      "IMG-20251104-WA0005.jpg",
+      "IMG-20251104-WA0025.jpg",
+      "IMG-20251104-WA0026.jpg",
+      "IMG_20241122_004151_067.jpg",
+      "IMG_20241228_221101_350.jpg",
+      "IMG_20241229_023233_006.jpg",
+      "IMG_20241229_023552_622.jpg",
+      "IMG_20241229_023608_654.jpg",
+      "IMG_20241229_023615_783.jpg",
+      "IMG_20241229_023652_834.jpg",
+      "IMG_20241230_181743_950.jpg",
+      "IMG_20241230_200036_576.jpg",
+      "IMG_20241230_200104_877.jpg",
+      "IMG_20241230_200119_670.jpg",
+      "IMG_20250114_015407_895.jpg",
+      "IMG_20250125_205044_391.jpg",
+      "IMG_20250125_205057_534.jpg",
+      "IMG_20250420_002145_957 (1).jpg",
+      "IMG_20250420_002149_339.jpg",
+      "IMG_20250420_002425_548.jpg",
+      "IMG_20250822_001757_386.jpg",
+      "IMG_20251216_161830_079.jpg",
+      "IMG_20260101_030136_925.jpg",
+      "IMG_20260103_230301_946.jpg",
+      "IMG_20260607_001855_055.jpg",
+      "IMG_20260607_001859_299.jpg",
+      "Screenshot_20250118_203055_Instagram.jpg",
+      "Screenshot_20251109_005209_Instagram.jpg"
+    ].map(name => photo("black", name))
   },
   {
     title: "Blue Lily",
+    folder: "blue",
     theme: "#7db7ff",
     glow: "#b9dcff",
-    photos: ["/photos/blue/1.jpg", "/photos/blue/2.jpg", "/photos/blue/3.jpg"]
+    photos: [
+      "20251104_094505.jpg",
+      "20251104_094507.jpg",
+      "20251104_145006.jpg",
+      "20260113_113958.jpg",
+      "20260113_114017.jpg",
+      "20260113_114019.jpg",
+      "IMG-20250217-WA0056 (1).jpg",
+      "IMG-20250217-WA0060.jpg",
+      "IMG-20250217-WA0062 (1).jpg",
+      "IMG_20240926_123249_408.jpg",
+      "IMG_20241007_213815_741.jpg",
+      "IMG_20251019_164408_242.jpg",
+      "IMG_20251205_231406_895.jpg",
+      "IMG_20260321_191721_721.jpg",
+      "IMG_20260321_192323_908.jpg",
+      "IMG_20260322_021823_651.jpg",
+      "IMG_20260322_021857_139.jpg",
+      "IMG_20260322_021905_139.jpg",
+      "IMG_20260322_021906_488.jpg",
+      "IMG_20260531_201629_843.jpg",
+      "PXL_20240701_105530254.NIGHT.jpg"
+    ].map(name => photo("blue", name))
   },
   {
     title: "Pink Lily",
+    folder: "pink",
     theme: "#ffb6d9",
     glow: "#ffd7ea",
-    photos: ["/photos/pink/1.jpg", "/photos/pink/2.jpg", "/photos/pink/3.jpg"]
+    photos: [
+      "IMG-20241223-WA0105.jpg",
+      "IMG-20241224-WA0001.jpg",
+      "IMG-20241224-WA0003.jpg",
+      "IMG-20241224-WA0007.jpg",
+      "IMG_20240813_225253_654.jpg",
+      "IMG_20241012_232823_420 (1).jpg",
+      "IMG_20241017_205024_612.jpg",
+      "IMG_20250331_185826_720.jpg",
+      "IMG_20250331_185837_299.jpg",
+      "IMG_20250331_194141_122.jpg",
+      "IMG_20251129_021446_566.jpg",
+      "IMG_20251129_021451_022.jpg",
+      "IMG_20260207_210715_132.jpg",
+      "IMG_20260207_210844_163.jpg",
+      "IMG_20260315_003443_533.jpg",
+      "IMG_20260315_003508_331.jpg",
+      "IMG_20260315_003514_495.jpg",
+      "IMG_20260510_173653_037.jpg",
+      "IMG_20260531_201508_280.jpg",
+      "IMG_20260531_201551_516.jpg"
+    ].map(name => photo("pink", name))
   },
   {
     title: "Red Lily",
+    folder: "red",
     theme: "#ff6b6b",
     glow: "#ffc2c2",
-    photos: ["/photos/red/1.jpg", "/photos/red/2.jpg", "/photos/red/3.jpg"]
+    photos: [
+      "IMG-20250721-WA0039.jpg",
+      "IMG-20251209-WA0005.jpg",
+      "IMG-20251209-WA0006.jpg",
+      "IMG_20240914_205756_061.jpg",
+      "IMG_20240917_182229_025.jpg",
+      "IMG_20240917_182244_476.jpg",
+      "IMG_20251209_012449_961.jpg",
+      "IMG_20260101_030121_904.jpg",
+      "IMG_20260101_030127_942.jpg",
+      "IMG_20260101_030131_841.jpg",
+      "IMG_20260101_030248_700.jpg",
+      "IMG_20260101_030248_704.jpg",
+      "PXL_20240613_104619676.NIGHT.jpg"
+    ].map(name => photo("red", name))
   },
   {
     title: "White Lily",
+    folder: "white",
     theme: "#fff7e8",
     glow: "#ffffff",
-    photos: ["/photos/white/1.jpg", "/photos/white/2.jpg", "/photos/white/3.jpg"]
+    photos: [
+      "20260129_140533(0).jpg",
+      "20260129_143549.jpg",
+      "20260129_143557.jpg",
+      "20260129_143558.jpg",
+      "20260129_143559.jpg",
+      "IMG-20240701-WA0052.jpg",
+      "IMG-20250407-WA0036 (1).jpg",
+      "IMG-20250915-WA0084.jpg",
+      "IMG-20250915-WA0094.jpg",
+      "IMG-20250915-WA0165.jpg",
+      "IMG_20241025_000520_757 (1).jpg",
+      "IMG_20241025_000529_902.jpg",
+      "IMG_20250118_220136_053.jpg",
+      "IMG_20260531_201506_603.jpg"
+    ].map(name => photo("white", name))
   },
   {
     title: "Yellow Lily",
+    folder: "yellow",
     theme: "#ffe477",
     glow: "#fff4bd",
-    photos: ["/photos/yellow/1.jpg", "/photos/yellow/2.jpg", "/photos/yellow/3.jpg"]
+    photos: [
+      "20260505_125706.jpg",
+      "20260505_134334.jpg",
+      "20260505_142034.jpg",
+      "IMG-20250321-WA0035.jpg",
+      "IMG_20240815_165445_293.jpg",
+      "IMG_20241222_022908_070.jpg",
+      "IMG_20241222_022912_550.jpg",
+      "IMG_20241222_022914_589.jpg",
+      "IMG_20250123_194804_474.jpg",
+      "IMG_20250123_194815_080.jpg",
+      "IMG_20250401_180349_240.jpg",
+      "IMG_20250614_104357_979.jpg",
+      "IMG_20250614_105202_336.jpg",
+      "IMG_20250614_105247_794.jpg",
+      "IMG_20250614_105302_360.jpg",
+      "IMG_20250614_105324_031.jpg",
+      "IMG_20250811_215129_862.jpg",
+      "IMG_20260323_215605_819.jpg",
+      "IMG_20260323_215619_166.jpg"
+    ].map(name => photo("yellow", name))
   }
 ];

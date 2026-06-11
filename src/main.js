@@ -4,10 +4,13 @@ import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 import { memories } from "./memories.js";
 import { openMemoryDoor } from "./gallery.js";
 
+const BASE = import.meta.env.BASE_URL;
+
 const canvas = document.getElementById("world");
 const title = document.getElementById("memory-title");
 
 const scene = new THREE.Scene();
+
 const camera = new THREE.PerspectiveCamera(
   45,
   window.innerWidth / window.innerHeight,
@@ -38,6 +41,7 @@ const loader = new GLTFLoader();
 let lilies = [];
 let currentIndex = 0;
 let startX = 0;
+let startY = 0;
 
 const pond = new THREE.Mesh(
   new THREE.CircleGeometry(8, 64),
@@ -81,16 +85,15 @@ function createFallbackLily(memory, index) {
 
   group.userData = { memory, index };
   scene.add(group);
-  lilies.push(group);
+  lilies[index] = group;
 }
 
 function loadLilies() {
   memories.forEach((memory, index) => {
     loader.load(
-      "/models/lily.glb",
+      `${BASE}models/lily.glb`,
       gltf => {
         const lily = gltf.scene;
-        lily.scale.set(1.4, 1.4, 1.4);
         lily.userData = { memory, index };
         scene.add(lily);
         lilies[index] = lily;
@@ -110,7 +113,7 @@ function updateCarousel() {
   title.textContent = memory.title;
 
   document.body.style.background = `
-    radial-gradient(circle at top, ${memory.theme}, #101020 70%)
+    radial-gradient(circle at top, ${memory.theme}, #101020 72%)
   `;
 
   lilies.forEach((lily, index) => {
@@ -120,7 +123,7 @@ function updateCarousel() {
 
     lily.position.x = offset * 3;
     lily.position.y = offset === 0 ? 0 : -0.35;
-    lily.position.z = Math.abs(offset) * -1.6;
+    lily.position.z = Math.abs(offset) * -1.7;
 
     const scale = offset === 0 ? 1.8 : 0.95;
     lily.scale.set(scale, scale, scale);
@@ -140,15 +143,21 @@ function prevLily() {
   updateCarousel();
 }
 
-window.addEventListener("pointerdown", e => {
-  startX = e.clientX;
+window.addEventListener("pointerdown", event => {
+  if (event.target.closest("#gallery, #memory-door")) return;
+
+  startX = event.clientX;
+  startY = event.clientY;
 });
 
-window.addEventListener("pointerup", e => {
-  const diff = e.clientX - startX;
+window.addEventListener("pointerup", event => {
+  if (event.target.closest("#gallery, #memory-door")) return;
 
-  if (Math.abs(diff) > 50) {
-    diff < 0 ? nextLily() : prevLily();
+  const diffX = event.clientX - startX;
+  const diffY = event.clientY - startY;
+
+  if (Math.abs(diffX) > 55 && Math.abs(diffX) > Math.abs(diffY)) {
+    diffX < 0 ? nextLily() : prevLily();
   } else {
     openMemoryDoor(memories[currentIndex]);
   }
