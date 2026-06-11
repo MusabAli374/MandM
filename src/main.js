@@ -125,7 +125,7 @@ function updateCarousel() {
     lily.position.y = offset === 0 ? 0 : -0.35;
     lily.position.z = Math.abs(offset) * -1.7;
 
-    const scale = offset === 0 ? 0.2 : 0.2;
+    const scale = offset === 0 ? 0.15: 0.15;
     lily.scale.set(scale, scale, scale);
 
     lily.rotation.y = offset * 0.45;
