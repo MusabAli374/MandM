@@ -113,7 +113,9 @@ function updateCarousel() {
   title.textContent = memory.title;
 
   document.body.style.background = `
-    radial-gradient(circle at top, ${memory.theme}, #101020 72%)
+    radial-gradient(circle at 50% 8%, rgba(255,255,255,0.9), transparent 24%),
+    radial-gradient(circle at 78% 18%, ${memory.theme}88, transparent 30%),
+    linear-gradient(180deg, #fff8ee 0%, ${memory.theme}66 48%, #eaf7e8 100%)
   `;
 
   lilies.forEach((lily, index) => {
