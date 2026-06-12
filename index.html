@@ -3,28 +3,45 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Mina's Memoirs</title>
+    <title>Mina's Memoires</title>
   </head>
+
   <body>
     <div id="app">
-      <canvas id="world"></canvas>
+      <div id="pastel-world">
+        <div class="cloud cloud-one"></div>
+        <div class="cloud cloud-two"></div>
+        <div class="cloud cloud-three"></div>
+        <div class="sun-glow"></div>
+        <div class="meadow"></div>
+      </div>
 
       <div id="ui">
-        <h1>minas memoires</h1>
+        <h1>mina's memoires</h1>
         <p id="memory-title">Swipe through the lilies</p>
-        <p class="hint">Tap to explore the color personified</p>
+        <p class="hint">tap the flower to enter a memory</p>
+      </div>
+
+      <div id="lily-stage">
+        <img id="left-lily" class="lily-img side-lily" alt="" />
+
+        <button id="center-lily-button" aria-label="Open memory">
+          <img id="center-lily" class="lily-img center-lily" alt="Selected lily" />
+        </button>
+
+        <img id="right-lily" class="lily-img side-lily" alt="" />
       </div>
 
       <div id="memory-door" class="hidden">
         <div id="blur-bg"></div>
         <div class="door-content">
           <h2 id="door-title">A Memory</h2>
-          <p>Click to enter this memory</p>
-          <button id="enter-memory">Enter Memory</button>
+          <p>click to enter this memory</p>
+          <button id="enter-memory">enter memory</button>
         </div>
       </div>
 
-      <div id="gallery" class="hidden">  
+      <div id="gallery" class="hidden">
         <button id="close-gallery">×</button>
 
         <img id="gallery-img" />
